@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIHE Student Portal - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #000;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notifications, .calendar-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .calendar-btn {
+            background: #333;
+            color: white;
+        }
+
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            border-right: 1px solid #e0e0e0;
+            padding: 1rem 0;
+        }
+
+        .search-box {
+            padding: 0 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .menu-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-title {
+            padding: 0 1rem;
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #333;
+            text-decoration: none;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background: #f0f0f0;
+            border-right: 3px solid #007bff;
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .welcome-section {
+            margin-bottom: 2rem;
+        }
+
+        .welcome-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .view-all {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 1.5rem;
+        }
+
+        .course-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .course-code {
+            font-size: 0.8rem;
+            color: #666;
+            margin-left: auto;
+        }
+
+        .course-instructor {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .progress-section {
+            margin-bottom: 1rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #28a745;
+            border-radius: 2px;
+        }
+
+        .course-schedule {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .quiz-list {
+            padding: 1.5rem;
+        }
+
+        .quiz-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-info h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .quiz-details {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .start-quiz-btn {
+            background: #333;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .results-list {
+            padding: 1.5rem;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-score {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin-right: 1rem;
+        }
+
+        .score-green { background: #28a745; }
+        .score-orange { background: #fd7e14; }
+        .score-blue { background: #007bff; }
+
+        .view-details {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">C</div>
+            <div>
+                <div class="logo-text">CIHE</div>
+                <div style="font-size: 0.8rem; color: #666;">Student Portal</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="#" class="notifications">🔔 Notifications</a>
+            <a href="#" class="calendar-btn">View Calendar</a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-title">Main</div>
+                <a href="#" class="menu-item active">📊 Dashboard</a>
+                <a href="#" class="menu-item">📚 Courses</a>
+                <a href="#" class="menu-item">❓ Quizzes</a>
+                <a href="#" class="menu-item">📅 Calendar</a>
+                <a href="#" class="menu-item">📖 Library</a>
+                <a href="#" class="menu-item">💬 Messages</a>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-title">Account</div>
+                <a href="#" class="menu-item">👤 Profile</a>
+                <a href="#" class="menu-item">⚙️ Settings</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="welcome-section">
+                <h1 class="welcome-title">Welcome back, Rashni Ryer</h1>
+                <p class="student-info">Student ID: CIHE | Program: Bachelor of Information Technology</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Upcoming Quizzes<br>Next quiz in 5 days</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Active Courses<br>Current semester</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">79%</div>
+                    <div class="stat-label">Average Score<br>Last 8 quizzes</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">My Courses</h2>
+                    <a href="#" class="view-all">View All ></a>
+                </div>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div>
+                                <div class="course-title">Project 1</div>
+                                <div class="course-instructor">Dr Nham Hoai Chu</div>
+                            </div>
+                            <div class="course-code">ICT301</div>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-label">
+                                <span>Progress</span>
+                                <span>68%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 68%"></div>
+                            </div>
+                        </div>
+                        <div class="course-schedule">📅 Wed, 10:00 AM</div>
+                        <div class="course-stats">
+                            <span>2 Quizzes</span>
+                            <span>1 Assignment</span>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div>
+                                <div class="course-title">Marketing Principles</div>
+                                <div class="course-instructor">Prof. Jessica Lee</div>
+                            </div>
+                            <div class="course-code">MKT202</div>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-label">
+                                <span>Progress</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="course-schedule">📅 Thu, 2:00 PM</div>
+                        <div class="course-stats">
+                            <span>1 Quiz</span>
+                            <span>2 Assignments</span>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div>
+                                <div class="course-title">Financial Management</div>
+                                <div class="course-instructor">Dr. Robin Gao</div>
+                            </div>
+                            <div class="course-code">FIN301</div>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-label">
+                                <span>Progress</span>
+                                <span>42%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 42%"></div>
+                            </div>
+                        </div>
+                        <div class="course-schedule">📅 Mon, 11:00 AM</div>
+                        <div class="course-stats">
+                            <span>3 Quizzes</span>
+                            <span>0 Assignments</span>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div>
+                                <div class="course-title">Mobile Application Development</div>
+                                <div class="course-instructor">Prof. Amanda Taylor</div>
+                            </div>
+                            <div class="course-code">ICT307</div>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-label">
+                                <span>Progress</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="course-schedule">📅 Fri, 1:00 PM</div>
+                        <div class="course-stats">
+                            <span>0 Quizzes</span>
+                            <span>2 Assignments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Results</h2>
+                        <a href="#" class="view-all">View All ></a>
+                    </div>
+                    <div class="results-list">
+                        <div class="result-item">
+                            <div style="display: flex; align-items: center;">
+                                <div class="result-score score-green">80%</div>
+                                <div>
+                                    <div style="font-weight: bold;">Business Ethics</div>
+                                    <div style="font-size: 0.8rem; color: #666;">BUS101 • May 15, 2025</div>
+                                </div>
+                            </div>
+                            <a href="#" class="view-details">View Details</a>
+                        </div>
+
+                        <div class="result-item">
+                            <div style="display: flex; align-items: center;">
+                                <div class="result-score score-orange">65%</div>
+                                <div>
+                                    <div style="font-weight: bold;">Big Data</div>
+                                    <div style="font-size: 0.8rem; color: #666;">ICT305 • May 10, 2025</div>
+                                </div>
+                            </div>
+                            <a href="#" class="view-details">View Details</a>
+                        </div>
+
+                        <div class="result-item">
+                            <div style="display: flex; align-items: center;">
+                                <div class="result-score score-blue">92%</div>
+                                <div>
+                                    <div style="font-weight: bold;">Mobile Application Development</div>
+                                    <div style="font-size: 0.8rem; color: #666;">ICT307 • May 5, 2025</div>
+                                </div>
+                            </div>
+                            <a href="#" class="view-details">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Upcoming Quizzes</h2>
+                        <a href="#" class="view-all">View All ></a>
+                    </div>
+                    <div class="quiz-list">
+                        <div class="quiz-item">
+                            <div class="quiz-info">
+                                <h4>Mid-term Assessment</h4>
+                                <div class="quiz-details">
+                                    ICT301 • Mobile Application Development<br>
+                                    Due Date: May 20, 2025<br>
+                                    Time Limit: 45 minutes<br>
+                                    Questions: 30
+                                </div>
+                            </div>
+                            <button class="start-quiz-btn">Start Quiz</button>
+                        </div>
+
+                        <div class="quiz-item">
+                            <div class="quiz-info">
+                                <h4>Second Quiz</h4>
+                                <div class="quiz-details">
+                                    ICT301 • Project 1<br>
+                                    Due Date: May 22, 2025<br>
+                                    Time Limit: 30 minutes<br>
+                                    Questions: 20
+                                </div>
+                            </div>
+                            <button class="start-quiz-btn">Start Quiz</button>
+                        </div>
+
+                        <div class="quiz-item">
+                            <div class="quiz-info">
+                                <h4>Business Ethics Case Study</h4>
+                                <div class="quiz-details">
+                                    BUS101 • Business Ethics<br>
+                                    Due Date: May 25, 2025<br>
+                                    Time Limit: 60 minutes<br>
+                                    Questions: 15
+                                </div>
+                            </div>
+                            <button class="start-quiz-btn">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
