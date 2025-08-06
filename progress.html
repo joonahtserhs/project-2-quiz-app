@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crown Institute of Higher Education - Quiz Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .main-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .institute-header {
+            margin-bottom: 3rem;
+        }
+
+        .institute-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .institute-location {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 2rem 0;
+        }
+
+        .results-section {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .results-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-info {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .result-card.score {
+            background: #f8f9fa;
+        }
+
+        .result-card.percentage {
+            background: #e8f5e8;
+            border-color: #28a745;
+        }
+
+        .result-card.time {
+            background: #f8f9fa;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-value.percentage {
+            color: #28a745;
+        }
+
+        .result-status {
+            font-size: 0.9rem;
+            color: #28a745;
+            font-weight: 500;
+        }
+
+        .review-section {
+            margin-bottom: 2rem;
+        }
+
+        .review-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .question-item {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .question-number {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .question-status {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .status-correct {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-incorrect {
+            background: #dc3545;
+            color: white;
+        }
+
+        .question-text {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .answer-info {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .your-answer {
+            color: #666;
+        }
+
+        .correct-answer {
+            color: #666;
+        }
+
+        .answer-value.correct {
+            color: #28a745;
+            font-weight: 500;
+        }
+
+        .answer-value.incorrect {
+            color: #dc3545;
+            font-weight: 500;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            border-color: #999;
+        }
+
+        .btn-primary {
+            background: #333;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        .btn-primary:hover {
+            background: #555;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 0 1rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="institute-header">
+            <h1 class="institute-title">Crown Institute of Higher Education</h1>
+            <p class="institute-location">Sydney, Australia</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="results-section">
+            <h2 class="results-title">Quiz Results</h2>
+            <p class="course-info">Introduction to Business Ethics - BUS101</p>
+
+            <div class="results-grid">
+                <div class="result-card score">
+                    <div class="result-label">Score</div>
+                    <div class="result-value">4/5</div>
+                </div>
+
+                <div class="result-card percentage">
+                    <div class="result-label">Percentage</div>
+                    <div class="result-value percentage">80%</div>
+                    <div class="result-status">Passed</div>
+                </div>
+
+                <div class="result-card time">
+                    <div class="result-label">Time Taken</div>
+                    <div class="result-value">24:35</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="review-section">
+            <h2 class="review-title">Question Review</h2>
+
+            <div class="question-item">
+                <div class="question-header">
+                    <div class="question-number">Question 1</div>
+                    <div class="question-status status-correct">✓</div>
+                </div>
+                <p class="question-text">Which of the following best describes ethical relativism?</p>
+                <div class="answer-info">
+                    <span class="your-answer">Your answer: <span class="answer-value correct">Option B</span></span>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <div class="question-header">
+                    <div class="question-number">Question 2</div>
+                    <div class="question-status status-correct">✓</div>
+                </div>
+                <p class="question-text">Corporate social responsibility primarily refers to:</p>
+                <div class="answer-info">
+                    <span class="your-answer">Your answer: <span class="answer-value correct">Option B</span></span>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <div class="question-header">
+                    <div class="question-number">Question 3</div>
+                    <div class="question-status status-incorrect">✗</div>
+                </div>
+                <p class="question-text">Which of the following is NOT typically considered a stakeholder of a business?</p>
+                <div class="answer-info">
+                    <span class="your-answer">Your answer: <span class="answer-value incorrect">Option A</span></span>
+                </div>
+                <div class="answer-info">
+                    <span class="correct-answer">Correct answer: <span class="answer-value correct">Option C</span></span>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <div class="question-header">
+                    <div class="question-number">Question 4</div>
+                    <div class="question-status status-correct">✓</div>
+                </div>
+                <p class="question-text">The 'triple bottom line' approach to business focuses on:</p>
+                <div class="answer-info">
+                    <span class="your-answer">Your answer: <span class="answer-value correct">Option B</span></span>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <div class="question-header">
+                    <div class="question-number">Question 5</div>
+                    <div class="question-status status-correct">✓</div>
+                </div>
+                <p class="question-text">Whistleblowing refers to:</p>
+                <div class="answer-info">
+                    <span class="your-answer">Your answer: <span class="answer-value correct">Option B</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="#" class="btn btn-secondary" onclick="goToDashboard()">Back to Dashboard</a>
+            <a href="#" class="btn btn-primary" onclick="attemptAnotherQuiz()">Attempt Another Quiz</a>
+        </div>
+    </div>
+
+    <script>
+        function goToDashboard() {
+            // In a real application, this would redirect to the dashboard
+            alert('Redirecting to dashboard...');
+            // window.location.href = 'dashboard.html';
+        }
+
+        function attemptAnotherQuiz() {
+            // In a real application, this would redirect to quiz selection
+            alert('Redirecting to quiz selection...');
+            // window.location.href = 'quiz-selection.html';
+        }
+
+        // Add some animation to the results on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const resultCards = document.querySelectorAll('.result-card');
+            const questionItems = document.querySelectorAll('.question-item');
+
+            // Animate result cards
+            resultCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 100);
+            });
+
+            // Animate question items
+            questionItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateX(-20px)';
+                    item.style.transition = 'all 0.4s ease';
+                    
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateX(0)';
+                    }, 50);
+                }, (index * 100) + 500);
+            });
+        });
+    </script>
+</body>
+</html>
