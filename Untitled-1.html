@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - CIHE Quiz System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border: 2px solid #000;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #000;
+            font-weight: normal;
+        }
+
+        .email-display {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #000;
+            background: white;
+            outline: none;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #333;
+        }
+
+        .password-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .forgot-password {
+            color: #666;
+            text-decoration: underline;
+            font-size: 1em;
+        }
+
+        .forgot-password:hover {
+            color: #000;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            background: #000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 25px 0 20px 0;
+        }
+
+        .login-btn:hover {
+            background: #333;
+        }
+
+        .google-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            background: white;
+            color: #000;
+            border: 2px solid #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .google-btn:hover {
+            background: #f8f8f8;
+        }
+
+        .signup-text {
+            color: #000;
+            font-size: 1em;
+        }
+
+        .signup-text a {
+            color: #666;
+            text-decoration: underline;
+        }
+
+        .signup-text a:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Log In - CIHE<br>Quiz System</h1>
+        
+        <form>
+            <div class="form-group">
+                <div class="email-display">Email - cihe****@student.cihe.edu.au</div>
+                <input type="text" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <div class="password-header">
+                    <label for="password">Password*</label>
+                    <a href="#" class="forgot-password">Forgot your password?</a>
+                </div>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="login-btn">Log in</button>
+
+            <button type="button" class="google-btn">
+                <span style="font-weight: bold; font-size: 1.2em;">G</span>
+                Log in with Google
+            </button>
+
+            <div class="signup-text">
+                Don't have an account? <a href="#">Sign Up</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
