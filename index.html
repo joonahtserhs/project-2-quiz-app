@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CIHE Quiz Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary-blue: #0b2c55;
+            --accent-gold: #f1c40f;
+        }
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .hero {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-weight: bold;
+        }
+        .stats-section {
+            padding: 30px 0;
+            background-color: white;
+        }
+        .quick-access {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+        .card-custom {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+        }
+        .cta-section {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .footer {
+            background-color: white;
+            padding: 40px 0;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+        }
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: black;
+            font-weight: 600;
+        }
+        .btn-gold:hover {
+            background-color: #d4ac0d;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: white; border-bottom: 1px solid #ddd;">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#" style="color: #08213f;">CIHE Quiz App</a>
+        <div class="d-flex">
+            <a href="login.html" class="btn btn-outline-dark me-2">Login</a>
+            <a href="register.html" class="btn btn-gold">Get Started</a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="hero" style="background-color: var(--primary-blue); color: white; padding: 60px 0; text-align: center;">
+    <div class="container">
+        <h1 class="fw-bold">Welcome to <span style="color: var(--accent-gold);">CIHE Quiz Portal</span></h1>
+        <p class="mb-4">Access your courses, take quizzes, track your progress, and excel in your academic journey at Crown Institute of Higher Education.</p>
+        <div class="mt-4">
+            <a href="dashboard.html" class="btn btn-gold me-2">Access Dashboard</a>
+            <a href="login.html" class="btn btn-light">Student Login</a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="fw-bold">2,500+</h4>
+                <p class="text-muted">Active Students</p>
+            </div>
+            <div class="col-md-3">
+                <h4 class="fw-bold">150+</h4>
+                <p class="text-muted">Available Courses</p>
+            </div>
+            <div class="col-md-3">
+                <h4 class="fw-bold">10,000+</h4>
+                <p class="text-muted">Quizzes Completed</p>
+            </div>
+            <div class="col-md-3">
+                <h4 class="fw-bold">85%</h4>
+                <p class="text-muted">Average Success Rate</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Access -->
+<section class="quick-access">
+    <div class="container">
+        <h3 class="text-center mb-5">Quick Access</h3>
+        <div class="row">
+            <!-- My Courses -->
+            <div class="col-md-4">
+                <div class="card-custom p-3">
+                    <h6 class="fw-bold mb-3">My Courses <span class="float-end"><a href="courses.html">View All</a></span></h6>
+                    <p class="mb-2">Project Management <small class="text-muted">Dr. Samir Chan</small></p>
+                    <p class="text-muted">86% • 45 students</p>
+                    <hr>
+                    <p class="mb-2">Mobile App Development <small class="text-muted">Prof. Michael Rock</small></p>
+                    <p class="text-muted">82% • 38 students</p>
+                    <hr>
+                    <p class="mb-2">Business Ethics <small class="text-muted">Dr. Emily Watson</small></p>
+                    <p class="text-muted">55% • 52 students</p>
+                    <button class="btn btn-outline-dark w-100 mt-2"><a href="courses.html">Access All Courses</a></button>
+                </div>
+            </div>
+            <!-- Upcoming Quizzes -->
+            <div class="col-md-4">
+                <div class="card-custom p-3">
+                    <h6 class="fw-bold mb-3">Upcoming Quizzes <span class="float-end"><a href="quiz-list.html">View All</a></span></h6>
+                    <p class="mb-2">Business Ethics Mid-term <span class="badge bg-primary">BUS101</span></p>
+                    <p class="text-muted">May 20, 2025 • 45 min • 30 Q</p>
+                    <hr>
+                    <p class="mb-2">Mobile App Development Quiz <span class="badge bg-primary">ICT307</span></p>
+                    <p class="text-muted">May 22, 2025 • 30 min • 20 Q</p>
+                    <hr>
+                    <p class="mb-2">Financial Management Assessment <span class="badge bg-primary">FIN301</span></p>
+                    <p class="text-muted">May 25, 2025 • 60 min • 25 Q</p>
+                    <button class="btn btn-outline-dark w-100 mt-2"><a href="quiz-list.html">View All Quizzes</a></button>
+                </div>
+            </div>
+            <!-- Recent Results -->
+            <div class="col-md-4">
+                <div class="card-custom p-3">
+                    <h6 class="fw-bold mb-3">Recent Results <span class="float-end"><a href="results.html">View All</a></span></h6>
+                    <p class="mb-2">Introduction to Programming <span class="badge bg-success">Passed</span></p>
+                    <p class="text-muted">ICT104 • May 15, 2025</p>
+                    <hr>
+                    <p class="mb-2">Database Systems <span class="badge bg-success">Passed</span></p>
+                    <p class="text-muted">ICT203 • May 12, 2025</p>
+                    <hr>
+                    <p class="mb-2">Web Development <span class="badge bg-success">Passed</span></p>
+                    <p class="text-muted">ICT205 • May 10, 2025</p>
+                    <button class="btn btn-outline-dark w-100 mt-2"><a href="results.html">View All Results</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h3>Ready to Excel in Your Studies?</h3>
+        <p>Join thousands of CIHE students who are already using our quiz portal to enhance their learning experience and achieve academic success.</p>
+        <a href="dashboard.html" class="btn btn-gold me-2">Go to Dashboard</a>
+        <a href="login.html" class="btn btn-light">Login Now</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h6 class="fw-bold">CIHE</h6>
+                <p>Crown Institute of Higher Education - Empowering students through quality education and innovative learning solutions.</p>
+            </div>
+            <div class="col-md-3">
+                <h6 class="fw-bold">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Quizzes</a></li>
+                    <li><a href="#">Results</a></li>
+                    <li><a href="#">Calendar</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h6 class="fw-bold">Support</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h6 class="fw-bold">Contact Info</h6>
+                <p>Sydney, Australia</p>
+                <p>+612 1234 5678</p>
+                <p>info@cihe.edu.au</p>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <small>&copy; 2025 Crown Institute of Higher Education. All rights reserved.</small>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

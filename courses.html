@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - CIHE Quiz App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0b2c55;
+            --accent-gold: #f1c40f;
+        }
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            padding: 20px;
+            transition: all 0.2s ease-in-out;
+        }
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .progress {
+            height: 8px;
+        }
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: black;
+            font-weight: 600;
+        }
+        .btn-gold:hover {
+            background-color: #d4ac0d;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html" style="color: #08213f;">CIHE Quiz App</a>
+        <div class="d-flex">
+            <a href="dashboard.html" class="btn btn-outline-dark me-2">Dashboard</a>
+            <a href="login.html" class="btn btn-gold">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<div class="container my-4">
+    <h2 class="fw-bold" style="color: var(--primary-blue);">My Courses</h2>
+    <p class="text-muted">Your enrolled courses for the current semester</p>
+</div>
+
+<!-- Courses Grid -->
+<div class="container">
+    <div class="row g-4">
+
+        <!-- Course 1 -->
+        <div class="col-md-6 col-lg-3">
+            <div class="course-card">
+                <h6 class="fw-bold">Project 1 <span class="badge bg-secondary">ICT301</span></h6>
+                <p class="text-muted mb-1">Dr. Naam Hoai Chu</p>
+                <p class="small mb-1"><strong>Schedule:</strong> Wed, 10:00 AM</p>
+                <p class="small mb-2"><strong>Quizzes:</strong> 2 • <strong>Assignments:</strong> 1</p>
+                <div class="progress mb-2">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 68%;"></div>
+                </div>
+                <small class="text-muted">Progress: 68%</small>
+            </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="col-md-6 col-lg-3">
+            <div class="course-card">
+                <h6 class="fw-bold">Marketing Principles <span class="badge bg-secondary">MKT202</span></h6>
+                <p class="text-muted mb-1">Prof. Jessica Lee</p>
+                <p class="small mb-1"><strong>Schedule:</strong> Thu, 2:00 PM</p>
+                <p class="small mb-2"><strong>Quizzes:</strong> 1 • <strong>Assignments:</strong> 2</p>
+                <div class="progress mb-2">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;"></div>
+                </div>
+                <small class="text-muted">Progress: 75%</small>
+            </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="col-md-6 col-lg-3">
+            <div class="course-card">
+                <h6 class="fw-bold">Financial Management <span class="badge bg-secondary">FIN301</span></h6>
+                <p class="text-muted mb-1">Dr. Robin Gao</p>
+                <p class="small mb-1"><strong>Schedule:</strong> Mon, 11:00 AM</p>
+                <p class="small mb-2"><strong>Quizzes:</strong> 3 • <strong>Assignments:</strong> 0</p>
+                <div class="progress mb-2">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 42%;"></div>
+                </div>
+                <small class="text-muted">Progress: 42%</small>
+            </div>
+        </div>
+
+        <!-- Course 4 -->
+        <div class="col-md-6 col-lg-3">
+            <div class="course-card">
+                <h6 class="fw-bold">Mobile Application Development <span class="badge bg-secondary">ICT307</span></h6>
+                <p class="text-muted mb-1">Prof. Amanda Taylor</p>
+                <p class="small mb-1"><strong>Schedule:</strong> Fri, 1:00 PM</p>
+                <p class="small mb-2"><strong>Quizzes:</strong> 0 • <strong>Assignments:</strong> 2</p>
+                <div class="progress mb-2">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;"></div>
+                </div>
+                <small class="text-muted">Progress: 90%</small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-weight: bold;
+}
+
+.text-warning {
+    color: #f1c40f !important;
+}
+
+/* Primary button styling */
+.btn-primary {
+    background-color: #0b2c55;
+    border-color: #0b2c55;
+}
+
+.btn-primary:hover {
+    background-color: #0d3b78;
+    border-color: #0d3b78;
+}
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+}
+
+/* Cards */
+.card-title {
+    font-weight: 600;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
